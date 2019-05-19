@@ -33,6 +33,9 @@ namespace trview
 
         /// Event raised when the user has clicked the orbit here button.
         Event<> on_orbit_here;
+
+        /// Event raised when the user has clicked the select sector button.
+        Event<> on_sector_selected;
     private:
         ui::StackPanel* _menu;
         ui::Button*     _remove_button;

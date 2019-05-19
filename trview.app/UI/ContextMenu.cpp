@@ -50,6 +50,15 @@ namespace trview
         };
         _menu->add_child(std::move(orbit_button));
 
+        auto sector_button = std::make_unique<Button>(Point(), Size(100, 24), L"Select Sector");
+        sector_button->set_text_background_colour(Colours::Button);
+        _token_store += sector_button->on_click += [&]()
+        {
+            on_sector_selected();
+            set_visible(false);
+        };
+        _menu->add_child(std::move(sector_button));
+
         _menu->set_visible(false);
     }
 
