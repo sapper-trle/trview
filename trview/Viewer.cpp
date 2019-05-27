@@ -151,6 +151,9 @@ namespace trview
             select_room(room_from_pick(_context_pick));
             _target = _context_pick.position;
         };
+        _token_store += _ui->on_select_sector += [&]()
+        {
+        };
         _token_store += _ui->on_settings += [&](auto settings) { _settings = settings; };
 
         _ui->set_settings(_settings);
