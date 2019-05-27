@@ -99,6 +99,7 @@ namespace trview
         _context_menu->on_add_waypoint += on_add_waypoint;
         _context_menu->on_remove_waypoint += on_remove_waypoint;
         _context_menu->on_orbit_here += on_orbit;
+        _context_menu->on_sector_selected += on_select_sector;
         _context_menu->set_remove_enabled(false);
 
         _level_info = std::make_unique<LevelInfo>(*_control.get(), texture_storage);

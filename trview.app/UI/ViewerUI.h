@@ -69,6 +69,9 @@ namespace trview
         /// Event raised when the orbit here button is pressed.
         Event<> on_orbit;
 
+        /// Event raised when the select sector button is pressed.
+        Event<> on_select_sector;
+
         /// Event raised when an alternate group is toggled.
         Event<uint16_t, bool> on_alternate_group;
 
