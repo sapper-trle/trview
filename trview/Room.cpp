@@ -668,4 +668,11 @@ namespace trview
     {
         return _water;
     }
+
+    std::shared_ptr<Sector> Room::sector_at(const DirectX::SimpleMath::Vector3& position) const
+    {
+        auto x = position.x - (_info.x / trlevel::Scale_X);
+        auto z = position.z - (_info.z / trlevel::Scale_Z);
+        return _sectors.at(get_sector_id(x, z));
+    }
 }

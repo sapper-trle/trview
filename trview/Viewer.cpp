@@ -153,6 +153,11 @@ namespace trview
         };
         _token_store += _ui->on_select_sector += [&]()
         {
+            // Use the position information from the pick to determine where that point is in the room.
+            auto room_index = room_from_pick(_context_pick);
+            auto room = _level->room(room_index);
+            auto sector = room->sector_at(_context_pick.position);
+
         };
         _token_store += _ui->on_settings += [&](auto settings) { _settings = settings; };
 
@@ -271,33 +276,15 @@ namespace trview
             // Highlight sectors in the minimap.
             if (_level)
             {
-                std::optional<RoomInfo> info;
-                if (result.hit)
-                {
-                    if (_current_pick.type == PickResult::Type::Room &&
-                        _current_pick.index == _level->selected_room())
-                    {
-                        info = _level->room(_current_pick.index)->info();
-                    }
-                    else if (_current_pick.type == PickResult::Type::Trigger)
-                    {
-                        auto trigger = _level->triggers()[_current_pick.index];
-                        if (trigger->room() == _level->selected_room())
-                        {
-                            info = _level->room(trigger->room())->info();
-                        }
-                    }
-                }
-
-                if (!info.has_value())
+                if (!(result.hit && room_from_pick(_current_pick) == _level->selected_room()))
                 {
                     _ui->clear_minimap_highlight();
                     return;
                 }
 
-                auto x = _current_pick.position.x - (info.value().x / trlevel::Scale_X);
-                auto z = _current_pick.position.z - (info.value().z / trlevel::Scale_Z);
-                _ui->set_minimap_highlight(x, z);
+                auto room = _level->room(_level->selected_room());
+                auto sector = room->sector_at(_current_pick.position);
+                _ui->set_minimap_highlight(sector->x(), sector->z());
             }
         };
     }

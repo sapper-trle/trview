@@ -432,11 +432,7 @@ namespace trview
             // Choose the nearest pick - but if the previous closest was trigger an entity should take priority over it.
             if (result.hit && (result.distance < final_result.distance || (result.type == PickResult::Type::Entity && final_result.type == PickResult::Type::Trigger)))
             {
-                final_result.hit = true;
-                final_result.distance = result.distance;
-                final_result.position = result.position;
-                final_result.index = result.index;
-                final_result.type = result.type;
+                final_result = result;
             }
         };
 
