@@ -1,3 +1,4 @@
+
 #include "stdafx.h"
 #include "Viewer.h"
 
@@ -132,9 +133,7 @@ namespace trview
             {
                 if (_level)
                 {
-                    const auto room_info = _level->room_info(_level->selected_room());
-                    _sector_highlight.set_sector(sector,
-                        DirectX::SimpleMath::Matrix::CreateTranslation(room_info.x / trlevel::Scale_X, 0, room_info.z / trlevel::Scale_Z));
+                    _sector_highlight.set_sector(sector, _level->room(_level->selected_room())->room_offset());
                     _scene_changed = true;
                 }
             };
@@ -153,11 +152,11 @@ namespace trview
         };
         _token_store += _ui->on_select_sector += [&]()
         {
-            // Use the position information from the pick to determine where that point is in the room.
             auto room_index = room_from_pick(_context_pick);
             auto room = _level->room(room_index);
             auto sector = room->sector_at(_context_pick.position);
-
+            _sector_highlight.set_sector(sector, room->room_offset());
+            _scene_changed = true;
         };
         _token_store += _ui->on_settings += [&](auto settings) { _settings = settings; };
 

@@ -675,4 +675,9 @@ namespace trview
         auto z = position.z - (_info.z / trlevel::Scale_Z);
         return _sectors.at(get_sector_id(x, z));
     }
+
+    DirectX::SimpleMath::Matrix Room::room_offset() const
+    {
+        return _room_offset;
+    }
 }

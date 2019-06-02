@@ -146,6 +146,8 @@ namespace trview
 
         /// Get the sector at the world position.
         std::shared_ptr<Sector> sector_at(const DirectX::SimpleMath::Vector3& position) const;
+
+        DirectX::SimpleMath::Matrix room_offset() const;
     private:
         void generate_geometry(trlevel::LevelVersion level_version, const graphics::Device& device, const trlevel::tr3_room& room, const ILevelTextureStorage& texture_storage);
         void generate_adjacency();
