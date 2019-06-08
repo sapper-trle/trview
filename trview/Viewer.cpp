@@ -269,22 +269,17 @@ namespace trview
         _token_store += _picking->on_pick += [&](const PickInfo& info, const PickResult& result)
         {
             _current_pick = result;
-
             _ui->set_pick(info, result);
 
-            // Highlight sectors in the minimap.
-            if (_level)
+            if (!_level || !(result.hit && room_from_pick(_current_pick) == _level->selected_room()))
             {
-                if (!(result.hit && room_from_pick(_current_pick) == _level->selected_room()))
-                {
-                    _ui->clear_minimap_highlight();
-                    return;
-                }
-
-                auto room = _level->room(_level->selected_room());
-                auto sector = room->sector_at(_current_pick.position);
-                _ui->set_minimap_highlight(sector->x(), sector->z());
+                _ui->clear_minimap_highlight();
+                return;
             }
+
+            auto room = _level->room(_level->selected_room());
+            auto sector = room->sector_at(_current_pick.position);
+            _ui->set_minimap_highlight(sector->x(), sector->z());
         };
     }
 
