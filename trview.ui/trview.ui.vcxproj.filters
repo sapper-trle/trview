@@ -61,6 +61,12 @@
     <ClInclude Include="IInputQuery.h">
       <Filter>Input</Filter>
     </ClInclude>
+    <ClInclude Include="Layouts\ILayout.h">
+      <Filter>Layouts</Filter>
+    </ClInclude>
+    <ClInclude Include="Layouts\AbsoluteLayout.h">
+      <Filter>Layouts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Control.cpp">
@@ -123,6 +129,12 @@
     <ClCompile Include="IInputQuery.cpp">
       <Filter>Input</Filter>
     </ClCompile>
+    <ClCompile Include="Layouts\ILayout.cpp">
+      <Filter>Layouts</Filter>
+    </ClCompile>
+    <ClCompile Include="Layouts\AbsoluteLayout.cpp">
+      <Filter>Layouts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Types">
@@ -148,6 +160,9 @@
     </Filter>
     <Filter Include="Input">
       <UniqueIdentifier>{4ae4639a-c45d-428e-9104-b6604caaa0cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Layouts">
+      <UniqueIdentifier>{ca52d2a7-d2b1-4327-8f7a-cb24f81da172}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

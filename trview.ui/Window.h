@@ -11,9 +11,8 @@ namespace trview
         class Window : public Control
         {
         public:
-            Window(const Size& size, const Colour& background_colour);
-
-            explicit Window(const Point& position, const Size& size, const Colour& background_colour);
+            Window(const Size& size, const Colour& background_colour, std::unique_ptr<ILayout>&& layout = create_default_layout());
+            Window(const Point& position, const Size& size, const Colour& background_colour, std::unique_ptr<ILayout>&& layout = create_default_layout());
 
             virtual ~Window() = default;
 

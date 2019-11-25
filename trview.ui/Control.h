@@ -11,6 +11,7 @@
 #include <trview.common/TokenStore.h>
 #include "Align.h"
 #include "IInputQuery.h"
+#include "Layouts/ILayout.h"
 
 namespace trview
 {
@@ -23,7 +24,7 @@ namespace trview
             /// Create a new control.
             /// @param position The position in the parent control.
             /// @param size The size of the control.
-            Control(Point position, Size size);
+            Control(Point position, Size size, std::unique_ptr<ILayout>&& layout = create_default_layout());
 
             /// Destructor for control.
             virtual ~Control() = 0;
@@ -237,7 +238,7 @@ namespace trview
             IInputQuery* _input_query{ nullptr };
         private:
             std::vector<std::unique_ptr<Control>> _child_elements;
-
+            std::unique_ptr<ILayout> _layout;
             Control* _parent{ nullptr };
             Point    _position;
             Size     _size;

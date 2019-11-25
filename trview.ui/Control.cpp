@@ -15,8 +15,8 @@ namespace trview
             }
         }
 
-        Control::Control(Point position, Size size)
-            : _position(position), _size(size), _visible(true)
+        Control::Control(Point position, Size size, std::unique_ptr<ILayout>&& layout)
+            : _position(position), _size(size), _visible(true), _layout(std::move(layout))
         {
         }
 

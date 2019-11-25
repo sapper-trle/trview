@@ -4,13 +4,13 @@ namespace trview
 {
     namespace ui
     {
-        Window::Window(const Size& size, const Colour& background_colour)
-            : Window(Point(), size, background_colour)
+        Window::Window(const Size& size, const Colour& background_colour, std::unique_ptr<ILayout>&& layout)
+            : Window(Point(), size, background_colour, std::move(layout))
         {
         }
 
-        Window::Window(const Point& point, const Size& size, const Colour& background_colour)
-            : Control(point, size), _background_colour(background_colour)
+        Window::Window(const Point& point, const Size& size, const Colour& background_colour, std::unique_ptr<ILayout>&& layout)
+            : Control(point, size, std::move(layout)), _background_colour(background_colour)
         {
         }
 
