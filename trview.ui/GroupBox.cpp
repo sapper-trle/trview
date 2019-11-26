@@ -36,7 +36,10 @@ namespace trview
             };
 
             // Client area is a box inside the lines.
-            _client_area = add_child(std::make_unique<Window>(Point(12, 20), Size(size.width, size.height) - Size(5, 20), background_colour));
+            _client_area = add_child(std::make_unique<Window>(Point(4, 20), Size(size.width, size.height) - Size(5, 20), background_colour));
+
+            // Remove the control that was just added to this control and add it to the client area instead.
+            _token_store += on_add_child += [&](Control* control) { _client_area->add_child(std::move(remove_child(control))); };
         }
 
         Window* GroupBox::client_area() const
