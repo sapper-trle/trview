@@ -1,5 +1,6 @@
 #include "GroupBox.h"
 #include "Label.h"
+#include "Layouts/GridLayout.h"
 
 namespace trview
 {
@@ -33,6 +34,14 @@ namespace trview
                 _top_right->set_position(_label->position() + Point(new_size.width + 1, 5));
                 _top_right->set_size(Size(this->size().width - _top_right->position().x - 1, 2));
             };
+
+            _client_area = add_child(std::make_unique<Window>(Point(12, 20), Size(size.width, size.height) - Size(5, 20), background_colour,
+                std::make_unique<GridLayout>()));
+        }
+
+        Window* GroupBox::client_area() const
+        {
+            return _client_area;
         }
 
         std::wstring GroupBox::title() const

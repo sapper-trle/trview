@@ -58,6 +58,11 @@ namespace trview
             on_hierarchy_changed();
             on_add_child(static_cast<Control*>(element));
 
+            if (_layout)
+            {
+                _layout->update_layout(*this);
+            }
+
             return element;
         }
     }

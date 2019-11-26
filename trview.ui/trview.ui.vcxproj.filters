@@ -67,6 +67,9 @@
     <ClInclude Include="Layouts\AbsoluteLayout.h">
       <Filter>Layouts</Filter>
     </ClInclude>
+    <ClInclude Include="Layouts\GridLayout.h">
+      <Filter>Layouts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Control.cpp">
@@ -133,6 +136,9 @@
       <Filter>Layouts</Filter>
     </ClCompile>
     <ClCompile Include="Layouts\AbsoluteLayout.cpp">
+      <Filter>Layouts</Filter>
+    </ClCompile>
+    <ClCompile Include="Layouts\GridLayout.cpp">
       <Filter>Layouts</Filter>
     </ClCompile>
   </ItemGroup>
