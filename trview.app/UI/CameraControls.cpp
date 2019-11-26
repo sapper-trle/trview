@@ -6,6 +6,7 @@
 #include <trview.ui/Slider.h>
 #include <trview.ui/Label.h>
 #include <trview.ui/StackPanel.h>
+#include <trview.ui/Layouts/GridLayout.h>
 
 namespace trview
 {
@@ -14,6 +15,7 @@ namespace trview
         using namespace ui;
 
         auto camera_window = std::make_unique<GroupBox>(Size(150, 72), Colour::Transparent, Colour::Grey, L"Camera");
+        camera_window->client_area()->set_layout(std::make_unique<GridLayout>());
 
         auto reset = std::make_unique<StackPanel>(Size(), Colour::Transparent, Size(2,0), StackPanel::Direction::Horizontal);
         auto reset_camera = std::make_unique<Button>(Size(16, 16));

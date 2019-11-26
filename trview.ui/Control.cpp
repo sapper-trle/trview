@@ -226,6 +226,15 @@ namespace trview
             return _handles_hover;
         }
 
+        void Control::set_layout(std::unique_ptr<ILayout>&& layout)
+        {
+            _layout = std::move(layout);
+            if (_layout)
+            {
+                _layout->update_layout(*this);
+            }
+        }
+
         void Control::set_handles_hover(bool value)
         {
             _handles_hover = value;

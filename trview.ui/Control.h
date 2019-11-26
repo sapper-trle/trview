@@ -108,6 +108,10 @@ namespace trview
             /// @param value Whether the control handles input.
             void set_handles_input(bool value);
 
+            /// Set the new layout for the control.
+            /// @param layout The layout for the control.
+            void set_layout(std::unique_ptr<ILayout>&& layout);
+
             /// Gets whether this control handles mouse hover events.
             bool handles_hover() const;
 
