@@ -20,9 +20,8 @@ namespace trview
         auto reset = std::make_unique<StackPanel>(Size(), Colour::Transparent, Size(2,0), StackPanel::Direction::Horizontal);
         auto reset_camera = std::make_unique<Button>(Size(16, 16));
         reset_camera->on_click += on_reset;
-        auto reset_camera_label = std::make_unique<Label>(Size(40, 16), Colour::Transparent, L"Reset", 8, graphics::TextAlignment::Left, graphics::ParagraphAlignment::Centre);
         reset->add_child(std::move(reset_camera));
-        reset->add_child(std::move(reset_camera_label));
+        reset->add_child(std::move(std::make_unique<Label>(Size(40, 16), Colour::Transparent, L"Reset", 8, graphics::TextAlignment::Left, graphics::ParagraphAlignment::Centre)));
 
         auto orbit_camera = std::make_unique<Checkbox>(Colour::Transparent, L"Orbit");
         _token_store += orbit_camera->on_state_changed += [&](auto) { change_mode(CameraMode::Orbit); };
