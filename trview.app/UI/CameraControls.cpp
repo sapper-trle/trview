@@ -15,7 +15,7 @@ namespace trview
         using namespace ui;
 
         auto camera_window = std::make_unique<GroupBox>(Size(150, 72), Colour::Transparent, Colour::Grey, L"Camera");
-        camera_window->client_area()->set_layout(std::make_unique<GridLayout>());
+        camera_window->client_area()->set_layout(std::make_unique<GridLayout>(2));
 
         auto reset = std::make_unique<StackPanel>(Size(), Colour::Transparent, Size(2,0), StackPanel::Direction::Horizontal);
         auto reset_camera = std::make_unique<Button>(Size(16, 16));
@@ -32,10 +32,10 @@ namespace trview
         auto axis_camera = std::make_unique<Checkbox>(Colour::Transparent, L"Axis");
         _token_store += axis_camera->on_state_changed += [&](auto) { change_mode(CameraMode::Axis); };
 
-        camera_window->client_area()->add_child(std::move(reset));
-        _orbit = camera_window->client_area()->add_child(std::move(orbit_camera));
-        _free = camera_window->client_area()->add_child(std::move(free_camera));
-        _axis = camera_window->client_area()->add_child(std::move(axis_camera));
+        camera_window->add_child(std::move(reset));
+        _orbit = camera_window->add_child(std::move(orbit_camera));
+        _free = camera_window->add_child(std::move(free_camera));
+        _axis = camera_window->add_child(std::move(axis_camera));
 
         parent.add_child(std::move(camera_window));
     }
