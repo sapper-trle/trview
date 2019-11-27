@@ -34,6 +34,11 @@ namespace trview
         return Size(width / divisor, height / divisor);
     }
 
+    Size Size::operator*(float scale) const
+    {
+        return Size(width * scale, height * scale);
+    }
+
     bool Size::operator==(const Size& size) const
     {
         return width == size.width && height == size.height;

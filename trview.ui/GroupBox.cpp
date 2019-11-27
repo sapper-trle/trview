@@ -52,6 +52,12 @@ namespace trview
             return _label->text();
         }
 
+        void GroupBox::set_client_area_margin(const Size& size)
+        {
+            _client_area->set_position(Point(size.width, size.height));
+            _client_area->set_size(this->size() - size * 2);
+        }
+
         void GroupBox::set_title(const std::wstring& title)
         {
             _label->set_text(title);

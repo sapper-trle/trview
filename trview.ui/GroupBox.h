@@ -14,6 +14,7 @@ namespace trview
             GroupBox(const Size& size, const Colour& background_colour, const Colour& border_colour, const std::wstring& text);
             GroupBox(const Point& point, const Size& size, const Colour& background_colour, const Colour& border_colour, const std::wstring& text);
             std::wstring title() const;
+            void set_client_area_margin(const Size& size);
             void set_title(const std::wstring& title);
             Window* client_area() const;
         private:

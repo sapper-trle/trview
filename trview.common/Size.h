@@ -38,6 +38,11 @@ namespace trview
         /// @returns The new size.
         Size operator/(float divisor) const;
 
+        /// Scale the size by a scale factor.
+        /// @param The scale factor.
+        /// @returns The new size.
+        Size operator*(float scale) const;
+
         /// Determines whether two sizes are equal.
         /// @param size The size to compare.
         bool operator==(const Size& size) const;

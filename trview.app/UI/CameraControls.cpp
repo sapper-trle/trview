@@ -15,6 +15,7 @@ namespace trview
         using namespace ui;
 
         auto camera_window = std::make_unique<GroupBox>(Size(150, 72), Colour::Transparent, Colour::Grey, L"Camera");
+        camera_window->set_client_area_margin(Size(12, 20));
         camera_window->client_area()->set_layout(std::make_unique<GridLayout>(2));
 
         auto reset = std::make_unique<StackPanel>(Size(), Colour::Transparent, Size(2,0), StackPanel::Direction::Horizontal);
