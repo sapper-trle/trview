@@ -40,7 +40,7 @@
     <ProjectGuid>{0B28C3CD-D28A-4923-9577-50EB1EE29212}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>trviewinput</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
