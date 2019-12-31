@@ -135,6 +135,7 @@ namespace trlevel
         // Get the version of the game that the level was built for.
         // Returns: The level version.
         virtual LevelVersion get_version() const = 0;
+		virtual uint32_t get_ver() const = 0;
 
         // Get the sprite squence with the specified ID.
         // sprite_sequence_id: The id of the sprite sequence to find.

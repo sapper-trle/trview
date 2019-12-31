@@ -141,6 +141,7 @@ namespace trlevel
         // Get the version of the game that the level was built for.
         // Returns: The level version.
         virtual LevelVersion get_version() const override;
+		virtual uint32_t get_ver() const override;
 
         // Get the sprite squence with the specified ID.
         // sprite_sequence_id: The id of the sprite sequence to find.
@@ -172,6 +173,7 @@ namespace trlevel
         void load_level_data(std::istream& file);
 
         LevelVersion _version;
+		uint32_t _ver;
 
         std::vector<tr_colour>  _palette;
         std::vector<tr_colour4> _palette16;

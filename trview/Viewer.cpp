@@ -570,6 +570,11 @@ namespace trview
         {
             new_level = trlevel::load_level(filename);
         }
+		catch (const char *)
+		{
+			MessageBox(_window.window(), L"TR4 encrypted level", L"Error", MB_OK);
+			return;
+		}
         catch(...)
         {
             MessageBox(_window.window(), L"Failed to load level", L"Error", MB_OK);

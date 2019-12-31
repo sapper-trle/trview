@@ -274,8 +274,11 @@ namespace trlevel
             std::ifstream file;
             file.exceptions(std::ifstream::failbit | std::ifstream::badbit | std::ifstream::eofbit);
             file.open(converted.c_str(), std::ios::binary);
-
-            _version = convert_level_version(read<uint32_t>(file));
+			_ver = read<uint32_t>(file);
+			if (_ver == 0x63345254){
+				throw "Encrypted TR4";
+			}
+            _version = convert_level_version(_ver);
             if (is_tr5(_version, converted))
             {
                 _version = LevelVersion::Tomb5;
@@ -311,6 +314,10 @@ namespace trlevel
 
             generate_meshes(_mesh_data);
         }
+		//catch (const char *)
+		//{
+		//	throw "Encrypted TR4";
+		//}
         catch(const std::exception&)
         {
             throw LevelLoadException();
@@ -650,6 +657,11 @@ namespace trlevel
     {
         return _version;
     }
+
+	uint32_t Level::get_ver() const
+	{
+		return _ver;
+	}
 
     bool Level::get_sprite_sequence_by_id(int32_t sprite_sequence_id, tr_sprite_sequence& output) const
     {
