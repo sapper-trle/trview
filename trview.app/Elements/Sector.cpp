@@ -115,6 +115,10 @@ namespace trview
                             // Camera has another uint16_t - skip for now.
                             command = level.get_floor_data(++cur_index);
                         }
+						if (action == TriggerCommandType::ClearBodies)//trng action trigger
+						{
+							command = level.get_floor_data(++cur_index);
+						}
                     }
 
                 } while (cur_index < max_floordata && !(command & 0x8000));
