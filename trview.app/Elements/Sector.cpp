@@ -8,8 +8,16 @@ namespace trview
     {
         _x = sector_id / room.num_z_sectors;
         _z = sector_id % room.num_z_sectors;
-        parse(level);
-        calculate_neighbours(level);
+		try
+		{
+			parse(level);
+			calculate_neighbours(level);
+		}
+		catch (...)
+		{
+			throw "floordata";
+		}
+        /*calculate_neighbours(level);*/
     }
 
     std::uint16_t

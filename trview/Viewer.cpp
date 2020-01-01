@@ -570,9 +570,16 @@ namespace trview
         {
             new_level = trlevel::load_level(filename);
         }
-		catch (const char *)
+		catch (const char *& e)
 		{
-			MessageBox(_window.window(), L"TR4 encrypted level", L"Error", MB_OK);
+			if (e == "Encrypted TR4")
+			{
+				MessageBox(_window.window(), L"TR4 encrypted level", L"Error", MB_OK);
+			}
+			else
+			{
+				MessageBox(_window.window(), L"Error parsing floor data", L"Error", MB_OK);
+			}
 			return;
 		}
         catch(...)
