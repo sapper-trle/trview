@@ -277,6 +277,7 @@ namespace trlevel
 			if (_ver == 0x63345254){
 				throw "Encrypted TR4";
 			}
+			_trng = false;
             _version = convert_level_version(_ver);
             if (is_tr5(_version, converted))
             {
@@ -313,10 +314,6 @@ namespace trlevel
 
             generate_meshes(_mesh_data);
         }
-		//catch (const char *)
-		//{
-		//	throw "Encrypted TR4";
-		//}
         catch(const std::exception&)
         {
             throw LevelLoadException();
@@ -662,6 +659,11 @@ namespace trlevel
 		return _ver;
 	}
 
+	bool Level::is_trng() const
+	{
+		return _trng;
+	}
+
     bool Level::get_sprite_sequence_by_id(int32_t sprite_sequence_id, tr_sprite_sequence& output) const
     {
         auto found_sequence = std::find_if(_sprite_sequences.begin(), _sprite_sequences.end(), [=](const auto& sequence)
@@ -727,6 +729,16 @@ namespace trlevel
         {
             sound_samples[i].sound_data = read_compressed(file);
         }
+
+		if (_version == LevelVersion::Tomb4)
+		{
+			file.seekg(-8, std::ios::end);
+			uint32_t ngle = read<uint32_t>(file);
+			if (ngle == 0x454C474E)
+			{
+				_trng = true;
+			}
+		}
 
         generate_meshes(_mesh_data);
     }
@@ -935,7 +947,7 @@ namespace trlevel
             std::vector<uint8_t> sound_data = read_vector<int32_t, uint8_t>(file);
         }
 
-        std::vector<uint32_t> sample_indices = read_vector<uint32_t, uint32_t>(file);
+        std::vector<uint32_t> sample_indices = read_vector<uint32_t, uint32_t>(file);		
     }
 
     bool Level::find_first_entity_by_type(int16_t type, tr2_entity& entity) const

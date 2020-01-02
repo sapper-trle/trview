@@ -164,6 +164,8 @@ namespace trlevel
         /// @param type The type id to check.
         /// @returns The mesh index for the type.
         virtual int16_t get_mesh_from_type_id(int16_t type) const override;
+
+		virtual bool is_trng() const override;
     private:
         void generate_meshes(const std::vector<uint16_t>& mesh_data);
 
@@ -174,6 +176,7 @@ namespace trlevel
 
         LevelVersion _version;
 		uint32_t _ver;
+		bool _trng;
 
         std::vector<tr_colour>  _palette;
         std::vector<tr_colour4> _palette16;

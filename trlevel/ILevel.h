@@ -158,5 +158,7 @@ namespace trlevel
         /// @param type The type id to check.
         /// @returns The mesh index for the type.
         virtual int16_t get_mesh_from_type_id(int16_t type) const = 0;
+
+		virtual bool is_trng() const = 0;
     };
 }

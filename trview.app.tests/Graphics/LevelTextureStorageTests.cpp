@@ -46,6 +46,7 @@ namespace
         MOCK_CONST_METHOD1(get_sprite_texture, tr_sprite_texture(uint32_t));
         MOCK_CONST_METHOD2(find_first_entity_by_type, bool(int16_t, tr2_entity&));
         MOCK_CONST_METHOD1(get_mesh_from_type_id, int16_t(int16_t));
+		MOCK_CONST_METHOD0(is_trng, bool());
     };
 }
 

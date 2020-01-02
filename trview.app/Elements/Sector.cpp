@@ -115,9 +115,21 @@ namespace trview
                             // Camera has another uint16_t - skip for now.
                             command = level.get_floor_data(++cur_index);
                         }
-						if (action == TriggerCommandType::ClearBodies)//trng action trigger
+						if (action == TriggerCommandType::Flyby)
 						{
+							// Flyby has another uint16_t Except those in title.tr4 of TRLE???
 							command = level.get_floor_data(++cur_index);
+						}
+						if (level.is_trng())
+						{
+							if (action == TriggerCommandType::ClearBodies)//trng action trigger has additional uint16_t
+							{
+								command = level.get_floor_data(++cur_index);
+							}
+							if (action == TriggerCommandType::Flipeffect)//trng flipeffects have additional uint16_t
+							{
+								command = level.get_floor_data(++cur_index);
+							}
 						}
                     }
 
