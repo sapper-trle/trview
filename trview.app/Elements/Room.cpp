@@ -209,7 +209,15 @@ namespace trview
         for (uint32_t i = 0; i < room.static_meshes.size(); ++i)
         {
             auto room_mesh = room.static_meshes[i];
-            auto level_static_mesh = level.get_static_mesh(room_mesh.mesh_id);
+			trlevel::tr_staticmesh level_static_mesh;
+			try
+			{
+				level_static_mesh = level.get_static_mesh(room_mesh.mesh_id);
+			}
+			catch (const char * e)
+			{
+				continue;
+			}
             auto static_mesh = std::make_unique<StaticMesh>(room_mesh, level_static_mesh, mesh_storage.mesh(level_static_mesh.Mesh));
             _static_meshes.push_back(std::move(static_mesh));
         }

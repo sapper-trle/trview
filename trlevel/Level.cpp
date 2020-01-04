@@ -538,7 +538,9 @@ namespace trlevel
 
     tr_staticmesh Level::get_static_mesh(uint32_t mesh_id) const
     {
-        return _static_meshes.find(mesh_id)->second;
+		if (_static_meshes.find(mesh_id) == _static_meshes.end())
+			throw "missing static";
+		return _static_meshes.find(mesh_id)->second;
     }
 
     uint32_t Level::num_mesh_pointers() const
